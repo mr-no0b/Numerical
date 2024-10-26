@@ -1,3 +1,5 @@
+# Solution of Linear Equations
+
 This C++ program demonstrates different numerical methods for solving systems of linear equations. The program allows the user to select from the following methods:
 
 1. Jacobi Iterative Method
@@ -115,16 +117,98 @@ Function: luFactorizationMethod()
 
 Complexity: Suitable for large systems; widely used in applications involving multiple right-hand sides with the same matrix 
 𝐴
-Example:
-4X1 + X2 + 2X3 = 4
-3X1 + 5X2 + X3 = 7
-X1 + X2 + 3X3 = 3
-Here the matrix A will contain:
+A.
+
+Example
+For a 3x3 system:
+
+{
+4
+𝑥
+1
++
+𝑥
+2
++
+2
+𝑥
+3
+=
+4
+3
+𝑥
+1
++
+5
+𝑥
+2
++
+𝑥
+3
+=
+7
+𝑥
+1
++
+𝑥
+2
++
+3
+𝑥
+3
+=
+3
+⎩
+⎨
+⎧
+​
+  
+4x 
+1
+​
+ +x 
+2
+​
+ +2x 
+3
+​
+ =4
+3x 
+1
+​
+ +5x 
+2
+​
+ +x 
+3
+​
+ =7
+x 
+1
+​
+ +x 
+2
+​
+ +3x 
+3
+​
+ =3
+​
+ 
+Here the matrix 
+𝐴
+A will contain:
+
+Copy code
 4 1 2
 3 5 1
 1 1 3
-And the vector will contain:
+And the vector 
+𝑏
+b will contain:
+
+Copy code
 4
 7
 3
-The solution will be shown in termiinal for this example.
+The solution will be shown in the terminal for this example.
