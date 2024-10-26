@@ -220,3 +220,94 @@ evaluatePolynomial(): Computes polynomial value by summing terms a_i * x^(degree
 evaluateDerivative(): Computes derivative by summing terms a_i * (degree - i) * x^(degree - i - 1).
 
 
+# Runge_Kutta Method and Matrix Inversion :
+
+This project demonstrates numerical methods for solving ordinary differential equations (ODEs) and performing matrix inversion. The code allows users to calculate approximate solutions to ODEs using the Runge-Kutta method and to compute the inverse of a square matrix using Gaussian elimination with row operations.
+
+
+## Overview
+
+This project contains two main functionalities:
+
+1. *Runge-Kutta Method*: A fourth-order method to approximate solutions for differential equations.
+2. *Matrix Inversion*: A method to calculate the inverse of a square matrix by Gaussian elimination.
+
+The code prompts the user to choose either method and accepts inputs for necessary parameters.
+
+## Methods and Explanations
+
+### Function f(x, y)
+
+This function calculates the value of \( f(x, y) = x^2 + y^2 \). It represents the differential equation \( y' = f(x, y) \), which is used in the Runge-Kutta method.
+
+*Parameters*:
+- x: The x-coordinate.
+- y: The y-coordinate.
+
+*Returns*:
+- The result of \( x^2 + y^2 \).
+
+### Function rungeKuttaMethod
+
+This function uses the fourth-order Runge-Kutta method to approximate the solution of a differential equation for given initial values.
+
+*How It Works*:
+
+1. *Input Values*:
+   - Initial values for x0 and y0, and the target xn at which to approximate y.
+   - The number of intervals intv to divide the range \([x_0, x_n]\), which determines the step size h.
+
+2. *Calculations*:
+   - The step size h is calculated as \( (x_n - x_0) / \text{intv} \).
+   - For each interval, intermediate values (k1, k2, k3, and k4) are computed to update y0 and x0 iteratively.
+
+3. *Output*:
+   - Displays the approximate value of y at xn.
+
+*Parameters*: None (inputs are taken interactively).
+
+### Function swap_rows
+
+This helper function swaps two rows of an augmented matrix, which is used in the matrix inversion process to ensure a non-zero pivot element.
+
+*Parameters*:
+- a: The augmented matrix of size \(10 \times 20\).
+- row1, row2: The row indices to swap.
+- n: The size of the matrix.
+
+*Returns*: None.
+
+### Function matrixInversion
+
+This function calculates the inverse of a square matrix using Gaussian elimination with partial pivoting.
+
+*How It Works*:
+
+1. *Input*:
+   - The matrix dimension n and matrix elements from the user.
+
+2. *Augmented Matrix*:
+   - An identity matrix is appended to the input matrix, creating an augmented matrix.
+
+3. *Row Operations*:
+   - Partial pivoting is performed to handle zero elements in the diagonal.
+   - Rows are scaled and subtracted to convert the matrix into row-reduced echelon form, making the original matrix become the identity matrix and the augmented part the inverse.
+
+4. *Output*:
+   - If the matrix is singular (non-invertible), an error message is displayed.
+   - Otherwise, the function displays the inverse matrix.
+
+*Parameters*: None (inputs are taken interactively).
+
+### Function last
+
+This function serves as the main driver for the program, allowing users to select either the Runge-Kutta method or matrix inversion.
+
+*How It Works*:
+1. Displays a menu and prompts the user to choose an option.
+2. Calls either rungeKuttaMethod or matrixInversion based on the user's choice.
+
+*Parameters*: None (inputs are taken interactively).
+
+
+
