@@ -195,20 +195,23 @@ Input: Requests an interval [a, b] and a tolerance level.
 Check: Ensures f(a) and f(b) have opposite signs.
 Loop: Finds the midpoint, narrows the interval based on function values, and repeats until convergence.
 Result: Returns the midpoint as the approximate root.
-##false_position.cpp
+
+## false_position.cpp
 The False Position Method uses linear interpolation to approximate the root:
 
 Input: Requests an interval [a, b] and tolerance.
 Calculation: Uses the formula c = (a * f(b) - b * f(a)) / (f(b) - f(a)) for interpolation.
 Update: Narrows interval by checking f(a) and f(c).
 Output: Returns c when tolerance is met.
-##secant.cpp
+
+## secant.cpp
 The Secant Method finds roots through successive linear approximations:
 
 Input: Requests two initial guesses (x0, x1) and tolerance.
 Iteration: Updates approximations with x2 = x1 - f(x1) * (x1 - x0) / (f(x1) - f(x0)).
 Convergence: Continues until f(x1) is within tolerance.
 Result: Outputs x2 as the approximate root.
+
 ## newton_raphson.cpp
 The Newton-Raphson Method iteratively refines an initial guess:
 
