@@ -24,7 +24,7 @@ where \( A \) is a matrix of coefficients, \( x \) is the vector of variables, a
 Run the Program:
 
 bash
-
+Copy code
 ./linear_solvers
 Select a Method:
 
@@ -199,14 +199,52 @@ Here the matrix
 𝐴
 A will contain:
 
-4 1 2
-3 5 1
-1 1 3
+[
+4
+1
+2
+3
+5
+1
+1
+1
+3
+]
+​
+  
+4
+3
+1
+​
+  
+1
+5
+1
+​
+  
+2
+1
+3
+​
+  
+​
+ 
 And the vector 
 𝑏
 b will contain:
 
+[
 4
 7
 3
+]
+​
+  
+4
+7
+3
+​
+  
+​
+ 
 The solution will be shown in the terminal for this example.
