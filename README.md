@@ -40,7 +40,9 @@ Enter your choice: _
 The methods.h header file declares the three main functions that link main.cpp to specific solution methods:
 
 nonlinear(): Directs to the non-linear equation-solving methods.
+
 linear(): Directs to the linear equation-solving methods.
+
 last(): Directs to differential equations and matrix inversion functions.
 
 # Solution of Linear Equations
