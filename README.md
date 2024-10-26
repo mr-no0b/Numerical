@@ -15,24 +15,25 @@ The main.cpp file is the central control of the application. It includes the mai
 
 Choose a problem type (e.g., linear or non-linear equations)
 Execute the chosen method using function calls:
-linear(): For linear equations
-nonlinear(): For non-linear equations
-last(): For differential equations and matrix inversion
-exit: To close the program
+`linear():` For linear equations
+
+`nonlinear():` For non-linear equations
+
+`last():` For differential equations and matrix inversion
+
+`exit:` To close the program
+
 Example Menu Output:
 
-## Application for Solving Equations and Inverting Matrices 
-**Select the type of problem:**
-
-**1. Solution of Linear Equations**
-
-**2. Solution of Non-linear Equations**
-
-**3. Solution of Differential Equations and Matrix Inversion**
-
-**4. Exit**
-
-**Enter your choice: _**
+```markdown
+Application for Solving Equations and Inverting Matrices 
+Select the type of problem:
+1. Solution of Linear Equations
+2. Solution of Non-linear Equations
+3. Solution of Differential Equations and Matrix Inversion**
+4. Exit
+Enter your choice: _
+```
 
 ## methods.h
 
