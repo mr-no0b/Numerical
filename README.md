@@ -1,250 +1,109 @@
-# Solution of Linear Equations
+# Console Application for Solving Equations and Matrix Inversion
+This C++ console application provides numerical methods for solving linear and non-linear equations, as well as differential equations and matrix inversion. Users can select a problem type from a menu to access various solution methods implemented in separate files.
 
-This C++ program demonstrates different numerical methods for solving systems of linear equations. The program allows the user to select from the following methods:
+## Project Structure
+The application consists of three main modules:
 
-1. Jacobi Iterative Method
-2. Gauss-Seidel Iterative Method
-3. Gauss Elimination
-4. Gauss-Jordan Elimination
-5. LU Factorization
+Solution of Linear Equations
+Solution of Non-linear Equations
+Differential Equations and Matrix Inversion
+Each module is managed by dedicated functions within main.cpp and accessed based on the user’s menu selection.
 
-Each method has a dedicated function and will prompt the user for the necessary matrix and vector inputs to solve a system of equations of the form:
+Code Overview
+main.cpp
+The main.cpp file is the central control of the application. It includes the main menu and navigates between linear and non-linear equations, differential equations, and matrix inversion. Users are presented with options to:
 
-\[
-Ax = b
-\]
+Choose a problem type (e.g., linear or non-linear equations)
+Execute the chosen method using function calls:
+linear(): For linear equations
+nonlinear(): For non-linear equations
+last(): For differential equations and matrix inversion
+exit: To close the program
+Example Menu Output:
 
-where \( A \) is a matrix of coefficients, \( x \) is the vector of variables, and \( b \) is the constant vector.
+## Application for Solving Equations and Inverting Matrices 
+**Select the type of problem:**
 
-## How to Use
+**1. Solution of Linear Equations**
 
-1. **Compile the Code**: 
-   ```bash
-   g++ -o linear_solvers linear_solvers.cpp
-Run the Program:
+**2. Solution of Non-linear Equations**
 
-bash
-Copy code
-./linear_solvers
-Select a Method:
+**3. Solution of Differential Equations and Matrix Inversion**
 
-The program will display a menu. Enter the corresponding number for the method you would like to use.
-Enter the System of Equations:
+**4. Exit**
 
-Enter the size of the system (number of equations).
-Enter the coefficients of matrix 
-𝐴
-A.
-Enter the constants of vector 
-𝑏
-b.
-View Results:
+**Enter your choice: _**
 
-The program will display the solution for the chosen method.
-Methods Explained
-1. Jacobi Iterative Method
-The Jacobi Method is an iterative algorithm that calculates an approximate solution to a system of linear equations. For each iteration, it updates each variable by solving for it in terms of other variables from the previous iteration. It continues until the approximation reaches the desired accuracy or the maximum number of iterations.
+## methods.h
 
-Function: jacobiMethod()
+The methods.h header file declares the three main functions that link main.cpp to specific solution methods:
 
-Complexity: This method is slow for large matrices but simple to implement. Convergence depends on the properties of matrix 
-𝐴
-A.
+nonlinear(): Directs to the non-linear equation-solving methods.
+linear(): Directs to the linear equation-solving methods.
+last(): Directs to differential equations and matrix inversion functions.
 
-2. Gauss-Seidel Iterative Method
-The Gauss-Seidel Method improves on the Jacobi method by using the most recent values for variables as soon as they are available. It tends to converge faster than Jacobi and is suitable for large sparse systems.
+# Non-linear Equations
 
-Function: gaussSeidelMethod()
+The Non-linear Equations module in nonlinear.cpp provides users with a choice of root-finding methods for polynomial equations of a given degree. The program includes implementations for:
 
-Complexity: Faster than Jacobi, especially when 
-𝐴
-A is diagonally dominant.
+**Bisection Method**
 
-3. Gauss Elimination
-The Gauss Elimination method is a direct method that transforms matrix 
-𝐴
-A into an upper triangular matrix by eliminating the lower elements through row operations. Once in upper triangular form, it performs back substitution to find the values of variables.
+**Secant Method**
 
-Function: gaussEliminationMethod()
+**Newton-Raphson Method**
 
-Complexity: 
-𝑂
-(
-𝑛
-3
-)
-O(n 
-3
- ) for 
-𝑛
-n-dimensional matrices; suitable for small to medium-sized systems.
+**False Position Method**
 
-4. Gauss-Jordan Elimination
-Gauss-Jordan Elimination is an extension of Gauss Elimination that reduces matrix 
-𝐴
-A to the identity matrix. This method finds the solution directly without requiring back substitution, making it suitable for solving systems of equations and finding matrix inverses.
+**nonlinear.h**
 
-Function: gaussJordanEliminationMethod()
+This header file declares all functions required for non-linear equation solving, including:
 
-Complexity: 
-𝑂
-(
-𝑛
-3
-)
-O(n 
-3
- ); more computationally intensive than Gauss Elimination but can provide additional insights into matrix structure.
+bisection(): Implements the Bisection Method.
+secant(): Implements the Secant Method.
+newtonRaphson(): Implements the Newton-Raphson Method.
+falsePosition(): Implements the False Position Method.
+evaluatePolynomial(): Evaluates the polynomial at a given point.
+evaluateDerivative(): Evaluates the polynomial’s derivative at a given point.
+Root-Finding Method Implementations
+## nonlinear.cpp
+The nonlinear() function prompts the user for polynomial degree, coefficients, and root-finding method choice. It:
 
-5. LU Factorization
-LU Factorization decomposes matrix 
-𝐴
-A into the product of a lower triangular matrix 
-𝐿
-L and an upper triangular matrix 
-𝑈
-U. It then solves for the variables using forward substitution on 
-𝐿
-L and backward substitution on 
-𝑈
-U. This method is efficient for solving multiple systems with the same 
-𝐴
-A matrix but different 
-𝑏
-b vectors.
+Captures Polynomial Degree and Coefficients: Reads user input for polynomial coefficients.
+Presents Method Choices: Allows users to select one of four root-finding methods.
+Executes the Chosen Method: Calls the appropriate function for solving the polynomial.
+Displays the Result: Outputs the calculated root.
+## bisection.cpp
+The Bisection Method iteratively halves an interval [a, b] to narrow down the root location. The steps are:
 
-Function: luFactorizationMethod()
+Input: Requests an interval [a, b] and a tolerance level.
+Check: Ensures f(a) and f(b) have opposite signs.
+Loop: Finds the midpoint, narrows the interval based on function values, and repeats until convergence.
+Result: Returns the midpoint as the approximate root.
+##false_position.cpp
+The False Position Method uses linear interpolation to approximate the root:
 
-Complexity: Suitable for large systems; widely used in applications involving multiple right-hand sides with the same matrix 
-𝐴
-A.
+Input: Requests an interval [a, b] and tolerance.
+Calculation: Uses the formula c = (a * f(b) - b * f(a)) / (f(b) - f(a)) for interpolation.
+Update: Narrows interval by checking f(a) and f(c).
+Output: Returns c when tolerance is met.
+##secant.cpp
+The Secant Method finds roots through successive linear approximations:
 
-Example
-For a 3x3 system:
+Input: Requests two initial guesses (x0, x1) and tolerance.
+Iteration: Updates approximations with x2 = x1 - f(x1) * (x1 - x0) / (f(x1) - f(x0)).
+Convergence: Continues until f(x1) is within tolerance.
+Result: Outputs x2 as the approximate root.
+## newton_raphson.cpp
+The Newton-Raphson Method iteratively refines an initial guess:
 
-{
-4
-𝑥
-1
-+
-𝑥
-2
-+
-2
-𝑥
-3
-=
-4
-3
-𝑥
-1
-+
-5
-𝑥
-2
-+
-𝑥
-3
-=
-7
-𝑥
-1
-+
-𝑥
-2
-+
-3
-𝑥
-3
-=
-3
-⎩
-⎨
-⎧
-​
-  
-4x 
-1
-​
- +x 
-2
-​
- +2x 
-3
-​
- =4
-3x 
-1
-​
- +5x 
-2
-​
- +x 
-3
-​
- =7
-x 
-1
-​
- +x 
-2
-​
- +3x 
-3
-​
- =3
-​
- 
-Here the matrix 
-𝐴
-A will contain:
 
-[
-4
-1
-2
-3
-5
-1
-1
-1
-3
-]
-​
-  
-4
-3
-1
-​
-  
-1
-5
-1
-​
-  
-2
-1
-3
-​
-  
-​
- 
-And the vector 
-𝑏
-b will contain:
+Input: Requests an initial guess (x0) and tolerance.
+Formula: Uses x1 = x0 - f(x0) / f'(x0) for approximation.
+Update: Iteratively refines guess with calculated derivative.
+Result: Returns x1 as the approximate root.
 
-[
-4
-7
-3
-]
-​
-  
-4
-7
-3
-​
-  
-​
- 
-The solution will be shown in the terminal for this example.
+### Helper Functions in `eva.cpp`
+evaluatePolynomial(): Computes polynomial value by summing terms a_i * x^(degree - I).
+evaluateDerivative(): Computes derivative by summing terms a_i * (degree - i) * x^(degree - i - 1).
+
+
